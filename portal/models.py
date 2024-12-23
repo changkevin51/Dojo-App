@@ -8,6 +8,12 @@ class CustomUser(AbstractUser):
     is_student = models.BooleanField(default=False)  # To identify students
     is_teacher = models.BooleanField(default=False)  # To identify teachers
 
+    gender = models.CharField(max_length=10, choices=[("female", "Female"), ("male", "Male"), ("other", "Other")], null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    province = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    dob = models.DateField(null=True, blank=True)
+
     # Add related_name for groups and user_permissions to avoid conflicts
     groups = models.ManyToManyField(
         'auth.Group',

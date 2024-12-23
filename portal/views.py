@@ -53,17 +53,14 @@ def user_login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
 
-    # Log the provided username and password (for debugging purposes)
     print(f"Attempting login with username: {username}")
 
-    # Authenticate the user
     user = authenticate(request, username=username, password=password)
     
     if user is not None:
       login(request, user)
       print(f"User {username} logged in successfully.")
       
-      # Redirect based on user role (assuming student/teacher dashboards exist)
       if user.is_student:
         return redirect('student_dashboard')
       elif user.is_teacher:
@@ -78,14 +75,11 @@ def user_login(request):
   
   return render(request, 'auth/login.html')
 
-# User Logout View
 @login_required
 def user_logout(request):
     logout(request)
     messages.success(request, "Logged out successfully.")
     return redirect('login')
-
-
 
 @login_required
 def register_units(request):
@@ -108,9 +102,9 @@ def register_student(request):
         form = StudentRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_student = True  # Assign role as student
+            user.is_student = True 
             user.save()
-            return redirect('login')  # Redirect to login page after successful registration
+            return redirect('login')  
     else:
         form = StudentRegistrationForm()
     return render(request, 'auth/register_student.html', {'form': form})
