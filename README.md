@@ -1,6 +1,9 @@
 # yo if you see this
 
-1. clone this
+1. clone the repo
+  ```bash
+https://github.com/changkevin51/Dojo-App.git
+```
 2. run these in the terminal
 
 ```bash
