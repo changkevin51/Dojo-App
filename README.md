@@ -11,6 +11,7 @@ pip install django
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
+python manage.py runserver
 ```
 
 to go to admin panel type /admin after the website link and then login with the super user username and password
